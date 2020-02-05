@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
             @Override
             public void onCancel() {
-                System.out.println("onCancel");
+                Log.i("Cancel","onCancel");
             }
             @Override
             public void onError(FacebookException exception) {
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.v("LoginActivity", exception.getCause().toString());
             }
         });
-        initializeControls();
+        initializeControls();   
         initializeGPlusSettings();
     }
     private void initializeControls(){
