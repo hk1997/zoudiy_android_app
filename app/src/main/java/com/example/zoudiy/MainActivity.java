@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText MobileNo;
     TextView otp;
-    static String url;
     public String mobileNo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +55,5 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-    }
-
-    private void createPost() {
-
     }
 }
