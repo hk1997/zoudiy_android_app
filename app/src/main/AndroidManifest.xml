@@ -17,9 +17,10 @@
         android:largeHeap="true">
 
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="adjustResize|adjustPan">
+        </activity>
 
-        <activity android:name=".OtpActivity" />
         <activity android:name=".SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

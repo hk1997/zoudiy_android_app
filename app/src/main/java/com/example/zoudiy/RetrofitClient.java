@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static final String Base_Url="http://backend-load-balancer-339488397.ap-south-1.elb.amazonaws.com/";
+    private static final String Base_Url="https://zoudiy.com/";
     private static  RetrofitClient mInstance;
     private Retrofit retrofit;
 

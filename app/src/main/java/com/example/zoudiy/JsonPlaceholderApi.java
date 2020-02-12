@@ -16,5 +16,12 @@ public interface JsonPlaceholderApi {
             (
                     @Field("phone") String mobileno
             );
+    @FormUrlEncoded
+    @POST("auth/verify-otp")
+    Call<ResponseBody> Verifyotp
+            (
+                    @Field("phone") String mobileno,
+                    @Field("otp") String Otp
+            );
 
 }

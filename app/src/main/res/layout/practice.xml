@@ -13,15 +13,17 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/oswald_semibold"
         android:layout_marginRight="40dp"
+        android:paddingLeft="40dp"
         android:ems="10"
-        android:gravity="center"
+        android:fontFamily="@font/oswald_semibold"
         android:hint="Enter Mobile No."
         android:inputType="phone"
         android:maxLength="10"
         android:textColor="#1E645F"
+        android:textColorHighlight="#1E645F"
         android:textColorHint="#1E645F"
+        android:textColorLink="#1E645F"
         android:textCursorDrawable="@null"
         android:textSize="24dp"
         android:textStyle="bold"
@@ -71,70 +73,93 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="214dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="157dp"
-        android:layout_marginRight="157dp"
-        android:layout_marginBottom="312dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otp">
+        app:layout_constraintTop_toBottomOf="@+id/otp"
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/et1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/background_otp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:inputType="phone"
             android:maxLength="1"
-            android:textAlignment="center" />
+            android:nextFocusRight="@id/et2"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint=" #1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
 
 
         <EditText
             android:id="@+id/et2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/background_otp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:inputType="phone"
             android:maxLength="1"
-            android:textAlignment="center" />
+            android:nextFocusRight="@id/et3"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
 
 
         <EditText
             android:id="@+id/et3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/background_otp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:inputType="phone"
             android:maxLength="1"
-            android:textAlignment="center" />
+            android:nextFocusRight="@id/et4"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
 
 
         <EditText
             android:id="@+id/et4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/background_otp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
             android:inputType="phone"
             android:maxLength="1"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
 
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="324dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="188dp"
         android:text="By clicking continue you agree to our Terms and Conditions"
         android:textColor="#1E645F"
         android:textSize="12dp"
@@ -142,8 +167,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/no_otp"
+        app:layout_constraintVertical_bias="0.194" />
 
     <TextView
         android:id="@+id/otp"
@@ -151,20 +176,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="171dp"
-        android:layout_marginRight="171dp"
-        android:layout_marginBottom="400dp"
+        android:layout_marginTop="31dp"
         android:text="Verify your otp"
         android:textAllCaps="true"
         android:textColor="#1E645F"
+        android:textColorHighlight="#1E645F"
+        android:textColorHint="#1E645F"
+        android:textColorLink="#1E645F"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/no_otp"
@@ -172,17 +198,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
-        android:layout_marginEnd="244dp"
-        android:layout_marginRight="244dp"
-        android:layout_marginBottom="268dp"
+        android:layout_marginTop="8dp"
         android:text="Didn't got Otp?"
         android:textAllCaps="true"
         android:textColor="#1E645F"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.004"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.037" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
