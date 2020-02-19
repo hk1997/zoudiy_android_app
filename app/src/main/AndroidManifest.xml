@@ -17,11 +17,14 @@
         android:largeHeap="true">
 
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".activities.MainActivity"
+            android:windowSoftInputMode="adjustResize|adjustPan">
+        </activity>
+        <activity android:name=".activities.Signup"
             android:windowSoftInputMode="adjustResize|adjustPan">
         </activity>
 
-        <activity android:name=".SplashActivity" >
+        <activity android:name=".activities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

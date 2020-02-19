@@ -1,4 +1,6 @@
-package com.example.zoudiy;
+package com.example.zoudiy.interfaces;
+
+import com.example.zoudiy.models.OtpResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -18,7 +20,7 @@ public interface JsonPlaceholderApi {
             );
     @FormUrlEncoded
     @POST("auth/verify-otp")
-    Call<ResponseBody> Verifyotp
+    Call<OtpResponse> Verifyotp
             (
                     @Field("phone") String mobileno,
                     @Field("otp") String Otp

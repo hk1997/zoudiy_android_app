@@ -1,4 +1,6 @@
-package com.example.zoudiy;
+package com.example.zoudiy.utils;
+
+import com.example.zoudiy.interfaces.JsonPlaceholderApi;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

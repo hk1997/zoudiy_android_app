@@ -1,13 +1,18 @@
-package com.example.zoudiy;
+package com.example.zoudiy.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.zoudiy.utils.Preference;
+import com.example.zoudiy.R;
+import com.example.zoudiy.utils.RetrofitClient;
+import com.example.zoudiy.models.OtpResponse;
 
 import java.io.IOException;
 
@@ -124,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(s.length()==0)
                 {
-                    OTP2.requestFocus();
+                    OTP2.clearFocus();
+                    OTP1.requestFocus();
                 }
             }
         });
@@ -148,7 +154,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(s.length()==0)
                 {
-                    OTP3.requestFocus();
+
+                    OTP3.clearFocus();
+                    OTP2.requestFocus();
                 }
             }
         });
@@ -170,24 +178,29 @@ public class MainActivity extends AppCompatActivity {
                 {
                     getotp= OTP1.getText().toString()+OTP2.getText().toString()+OTP3.getText().toString()+OTP4.getText().toString();
                     mobileNo = "+91" + " " + MobileNo.getText().toString();
-                    Call<ResponseBody> call = RetrofitClient
+                    Call<OtpResponse> call = RetrofitClient
                             .getInstance()
                             .getApi()
                             .Verifyotp(mobileNo,getotp);
-                    call.enqueue(new Callback<ResponseBody>() {
+                    call.enqueue(new Callback<OtpResponse>() {
                         @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        public void onResponse(Call<OtpResponse> call, Response<OtpResponse> response) {
                             try {
-                                String s = response.body().string();
-                                Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
-                            } catch (IOException e) {
+                                OtpResponse otpResponse = response.body();
+                                String token=otpResponse.getData().getToken();
+                                Preference.setAccessToken(MainActivity.this,token);
+                                Intent intent=new Intent(MainActivity.this,Signup.class);
+                                startActivity(intent);
+                                //Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                        public void onFailure(Call<OtpResponse> call, Throwable t) {
+                            Log.d("Failure",t.toString());
+                            //Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
                 }
