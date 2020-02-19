@@ -1,2 +1,2 @@
-include ':app', ':facebook'
+include ':app'
 rootProject.name='Zoudiy'
