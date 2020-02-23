@@ -39,4 +39,9 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    compile 'com.ncapdevi:frag-nav:1.0.3'
+    compile 'com.roughike:bottom-bar:1.3.9'
+    compile('com.mikepenz:materialdrawer:5.3.1@aar') {
+        transitive = true
+    }
 }

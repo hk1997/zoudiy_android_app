@@ -6,6 +6,7 @@
     <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +20,9 @@
 
         <activity android:name=".activities.MainActivity"
             android:windowSoftInputMode="adjustResize|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
         <activity android:name=".activities.Signup"
             android:windowSoftInputMode="adjustResize|adjustPan">

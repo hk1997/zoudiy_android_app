@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <!--Every item for another tab-->
+    <!--        android:icon="@drawable/ic_looks_3_black_24dp"-->
+    <item
+        android:id="@+id/bottomBarItemOne"
+        android:title="First item" />
+    <item
+        android:id="@+id/bottomBarItemSecond"
+        android:title="Second item" />
+    <item
+        android:id="@+id/bottomBarItemThird"
+        android:title="Third item" />
+</menu>
