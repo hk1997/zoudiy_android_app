@@ -25,5 +25,4 @@ public interface JsonPlaceholderApi {
                     @Field("phone") String mobileno,
                     @Field("otp") String Otp
             );
-
 }

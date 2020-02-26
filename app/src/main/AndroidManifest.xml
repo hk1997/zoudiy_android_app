@@ -27,6 +27,9 @@
         <activity android:name=".activities.Signup"
             android:windowSoftInputMode="adjustResize|adjustPan">
         </activity>
+        <activity android:name=".activities.HomeActivity"
+            android:windowSoftInputMode="adjustResize|adjustPan">
+        </activity>
 
         <activity android:name=".activities.SplashActivity" >
             <intent-filter>

@@ -7,12 +7,13 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">#1E645F</item>
         <item name="windowNoTitle">true</item>
-        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
     </style>
 
-    <!--use item name="drawerArrowStyle" if you are using dark primaryColor in your app, else remove it-->
-    <style name="MaterialDrawer.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="spinBars">false</item>
-        <item name="color">@android:color/white</item>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
