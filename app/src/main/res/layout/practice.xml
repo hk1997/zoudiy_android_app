@@ -150,6 +150,33 @@
             android:textColorLink="#1E645F"
             android:textCursorDrawable="@null"
             android:textSize="24dp" />
+        <EditText
+            android:id="@+id/et5"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
+
+        <EditText
+            android:id="@+id/et6"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
 
     </LinearLayout>
 

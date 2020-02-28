@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.zoudiy.R;
+import com.example.zoudiy.utils.Preference;
 
 public class  SplashActivity extends AppCompatActivity {
     @Override
@@ -23,8 +24,14 @@ public class  SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // This method will be executed once the timer is over
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(i);
+                if (Preference.getAccessToken(SplashActivity.this)!=null){
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(i);
+                }
+                else{
+                    Intent i = new Intent(SplashActivity.this, Signup.class);
+                    startActivity(i);
+                }
                 finish();
             }
         }, 3000);

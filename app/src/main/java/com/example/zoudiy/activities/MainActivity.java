@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +25,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText MobileNo,OTP1,OTP3,OTP2,OTP4;
+    EditText MobileNo,OTP1,OTP3,OTP2,OTP4,OTP5,OTP6;
     public String mobileNo,getotp;
 
     @Override
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         OTP2 = (EditText) findViewById(R.id.et2);
         OTP3 = (EditText) findViewById(R.id.et3);
         OTP4 = (EditText) findViewById(R.id.et4);
+        OTP5 = (EditText) findViewById(R.id.et5);
+        OTP6 = (EditText) findViewById(R.id.et6);
 
         OTP1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -176,7 +179,59 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(s.length()==1)
                 {
-                    getotp= OTP1.getText().toString()+OTP2.getText().toString()+OTP3.getText().toString()+OTP4.getText().toString();
+                    OTP5.requestFocus();
+                }
+                else if(s.length()==0)
+                {
+
+                    OTP4.clearFocus();
+                    OTP3.requestFocus();
+                }
+            }
+        });
+
+        OTP5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length()==1)
+                {
+                    OTP6.requestFocus();
+                }
+                else if(s.length()==0)
+                {
+
+                    OTP5.clearFocus();
+                    OTP4.requestFocus();
+                }
+            }
+        });
+
+        OTP6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length()==1)
+                {
+                    getotp= OTP1.getText().toString()+OTP2.getText().toString()+OTP3.getText().toString()+OTP4.getText().toString()+OTP5.getText().toString()+OTP6.getText().toString();
                     mobileNo = "+91" + " " + MobileNo.getText().toString();
                     Call<OtpResponse> call = RetrofitClient
                             .getInstance()
@@ -186,11 +241,19 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<OtpResponse> call, Response<OtpResponse> response) {
                             try {
-                                OtpResponse otpResponse = response.body();
-                                String token=otpResponse.getData().getToken();
-                                Preference.setAccessToken(MainActivity.this,token);
-                                Intent intent=new Intent(MainActivity.this,Signup.class);
-                                startActivity(intent);
+                                if(response.isSuccessful()==true)
+                                {
+                                    OtpResponse otpResponse = response.body();
+                                    String token=otpResponse.getData().getToken();
+                                    Preference.setAccessToken(MainActivity.this,token);
+                                    Intent intent=new Intent(MainActivity.this,Signup.class);
+                                    startActivity(intent);
+                                }
+                                else
+                                {
+                                    Toast.makeText(MainActivity.this,"Invalid OTP",Toast.LENGTH_LONG).show();
+                                    return;
+                                }
                                 //Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -206,8 +269,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(s.length()==0)
                 {
-                    OTP4.clearFocus();
-                    OTP3.requestFocus();
+                    OTP6.clearFocus();
+                    OTP5.requestFocus();
                 }
             }
         });
