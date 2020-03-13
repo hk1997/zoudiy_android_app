@@ -18,22 +18,17 @@ public class  SplashActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        new Handler().postDelayed(new Runnable() {
-
-
-            @Override
-            public void run() {
-                // This method will be executed once the timer is over
-                if (Preference.getAccessToken(SplashActivity.this)!=null){
-                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(i);
-                }
-                else{
-                    Intent i = new Intent(SplashActivity.this, Signup.class);
-                    startActivity(i);
-                }
-                finish();
+        new Handler().postDelayed(() -> {
+            // This method will be executed once the timer is over
+            if (Preference.getAccessToken(SplashActivity.this)!=null){
+                Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(i);
             }
+            else{
+                Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+            finish();
         }, 3000);
     }
 }

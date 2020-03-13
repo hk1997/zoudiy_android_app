@@ -4,34 +4,39 @@
     package="com.example.zoudiy">
 
     <dist:module dist:instant="true" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
-        android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true">
-
-
-        <activity android:name=".activities.MainActivity"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.AddNewAddr" />
+        <activity android:name=".activities.AddNewKid" />
+        <activity android:name=".activities.verifyOTP" />
+        <activity android:name=".activities.SignupAddr" />
+        <activity android:name=".activities.SignupKids" />
+        <activity
+            android:name=".activities.MainActivity"
             android:windowSoftInputMode="adjustResize|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Signup"
-            android:windowSoftInputMode="adjustResize|adjustPan">
-        </activity>
-        <activity android:name=".activities.HomeActivity"
-            android:windowSoftInputMode="adjustResize|adjustPan">
-        </activity>
-
-        <activity android:name=".activities.SplashActivity" >
+        <activity
+            android:name=".activities.Signup"
+            android:windowSoftInputMode="adjustResize|adjustPan" />
+        <activity
+            android:name=".activities.HomeActivity"
+            android:windowSoftInputMode="adjustResize|adjustPan" />
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

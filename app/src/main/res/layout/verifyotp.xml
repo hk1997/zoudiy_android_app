@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbackground"
+    tools:context=".activities.MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView7"
+        android:text="LOGIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/oswald_semibold"
+        android:textColor="#1E645F"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        android:weightSum="6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otp"
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:maxLength="1"
+            android:layout_weight="1"
+            android:nextFocusRight="@id/et2"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint=" #1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
+
+
+        <EditText
+            android:id="@+id/et2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:maxLength="1"
+            android:layout_weight="1"
+            android:nextFocusRight="@id/et3"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
+
+
+        <EditText
+            android:id="@+id/et3"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:layout_weight="1"
+            android:maxLength="1"
+            android:nextFocusRight="@id/et4"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
+
+
+        <EditText
+            android:id="@+id/et4"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="1"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
+
+        <EditText
+            android:id="@+id/et5"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="1"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
+
+        <EditText
+            android:id="@+id/et6"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textColor="#1E645F"
+            android:layout_weight="1"
+            android:textColorHighlight="#1E645F"
+            android:textColorHint="#1E645F"
+            android:textColorLink="#1E645F"
+            android:textCursorDrawable="@null"
+            android:textSize="24dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:text="By clicking verify you agree to our Terms and Conditions"
+        android:textColor="#1E645F"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_otp"
+        app:layout_constraintVertical_bias="0.194" />
+
+    <TextView
+        android:id="@+id/otp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="31dp"
+        android:text="Verify your otp"
+        android:textAllCaps="true"
+        android:textColor="#1E645F"
+        android:textColorHighlight="#1E645F"
+        android:textColorHint="#1E645F"
+        android:textColorLink="#1E645F"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/no_otp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Didn't get Otp?"
+        android:textAllCaps="true"
+        android:textColor="#1E645F"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <Button
+        android:id="@+id/verifyotp"
+        android:text="verify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/border"
+        android:enabled="false"
+        android:fontFamily="@font/oswald_semibold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_otp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
