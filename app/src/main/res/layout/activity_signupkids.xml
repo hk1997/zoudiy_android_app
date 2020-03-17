@@ -11,12 +11,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="370dp"
-        android:layout_height="426dp"
-        card_view:layout_constraintBottom_toTopOf="@+id/addkidbutton"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_marginTop="100dp"
+        card_view:layout_constraintBottom_toTopOf="@+id/next"
         card_view:layout_constraintEnd_toEndOf="parent"
         card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent" />
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addkidbutton"
@@ -43,10 +45,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintEnd_toEndOf="parent"
-        card_view:layout_constraintHorizontal_bias="0.498"
+        card_view:layout_constraintEnd_toStartOf="@+id/addkidbutton"
+        card_view:layout_constraintHorizontal_bias="0.642"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent"
-        card_view:layout_constraintVertical_bias="0.811" />
+        card_view:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
