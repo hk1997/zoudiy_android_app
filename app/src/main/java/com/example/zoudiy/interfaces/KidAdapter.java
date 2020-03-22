@@ -52,12 +52,12 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         return kidList.size();
     }
 
-    class KidViewHolder extends RecyclerView.ViewHolder{
+    static class KidViewHolder extends RecyclerView.ViewHolder{
 
         TextView kidName, kidSurname, kidSchool, kidAge;
         ImageView kidPicture;
 
-        public KidViewHolder(@NonNull View itemView) {
+        KidViewHolder(@NonNull View itemView) {
             super(itemView);
 
             kidName = itemView.findViewById(R.id.kidName);

@@ -7,13 +7,25 @@ public class AddressUser {
     String nickname;
     String type;
     String locality;
+    int picture;
 
-    public AddressUser(String city, String postalCode, String nickname, String type, String locality) {
+
+
+    public AddressUser(String city, String postalCode, String nickname, String type, String locality, int picture) {
         this.city = city;
         this.postalCode = postalCode;
         this.nickname = nickname;
         this.type = type;
         this.locality = locality;
+        this.picture = picture;
+    }
+
+    public int getPicture() {
+        return picture;
+    }
+
+    public void setPicture(int picture) {
+        this.picture = picture;
     }
 
     public String getCity() {
