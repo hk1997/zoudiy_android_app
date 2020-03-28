@@ -214,10 +214,6 @@ public class verifyOTP extends AppCompatActivity {
                     try {
                         if(response.isSuccessful())
                         {
-                            //get profile details here
-                            //if complete go to home
-                            //else go to complete profile section
-
                             OtpResponse otpResponse = response.body();
 
                             String token=otpResponse.getData().getToken();

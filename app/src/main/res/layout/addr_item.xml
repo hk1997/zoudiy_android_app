@@ -5,11 +5,16 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="8dp"
+
         android:layout_margin="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:layout_margin="5dp"
+            android:elevation="8dp"
             android:padding="8dp">
 
             <ImageView
@@ -24,8 +29,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_toEndOf="@id/addr_picture"
-                android:text="City"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:text="Address Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:textColor="#000000" />
 
             <TextView
@@ -36,8 +42,10 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/addr_picture"
-                android:text="nickname"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:paddingLeft="15dp"
+                android:text="Pincode"
+                android:textColor="@color/black"
+                android:textSize="17sp"/>
 
             <TextView
                 android:id="@+id/addr_postal"
@@ -47,12 +55,11 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/addr_picture"
-                android:background="@color/colorPrimary"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="postal"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/addr_type"
@@ -63,8 +70,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/addr_picture"
                 android:text="type"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textStyle="bold" />
+                android:paddingLeft="15dp"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

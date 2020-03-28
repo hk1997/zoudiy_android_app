@@ -25,13 +25,31 @@
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="349dp"
+            android:layout_height="350dp"
+            android:padding="8dp"
             tools:context=".activities.AddNewAddr" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:background="@drawable/border"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:fontFamily="@font/oswald_semibold"
+            android:text="Long Click to Add Selected Address."
+            android:textColor="#1E645F"
+            android:textStyle="italic"
+            />
 
         <ListView
             android:id="@+id/listPlaces"
+            android:background="@drawable/border"
+            android:longClickable="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

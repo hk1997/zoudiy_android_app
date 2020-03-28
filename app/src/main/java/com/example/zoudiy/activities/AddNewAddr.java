@@ -86,6 +86,16 @@ public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback 
         }
     };
 
+    AdapterView.OnItemLongClickListener itemLongClickListener = new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+            return false;
+        }
+    };
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -221,9 +231,6 @@ public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback 
                             }
                         }
 
-
-                        // COMMENTED OUT UNTIL WE DEFINE THE METHOD
-                        // Populate the ListView
                         fillPlacesList();
                     } else {
                         Exception exception = task.getException();
@@ -249,7 +256,7 @@ public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback 
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = task.getResult();
-                            LatLng markerLatLng = new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude());
+                            LatLng markerLatLng = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
 
                             Log.d(TAG, "Latitude: " + mLastKnownLocation.getLatitude());
                             Log.d(TAG, "Longitude: " + mLastKnownLocation.getLongitude());
@@ -263,8 +270,7 @@ public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback 
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
                             Log.e(TAG, "Exception: %s", task.getException());
-                            mMap.moveCamera(CameraUpdateFactory
-                                    .newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
                         }
 
                         getCurrentPlaceLikelihoods();

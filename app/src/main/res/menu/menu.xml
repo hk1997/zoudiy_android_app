@@ -7,6 +7,7 @@
         android:id="@+id/action_geolocate"
         android:icon="@drawable/ic_geolocate"
         android:title="@string/action_geolocate"
+        
         app:showAsAction="always|withText" />
 
 </menu>

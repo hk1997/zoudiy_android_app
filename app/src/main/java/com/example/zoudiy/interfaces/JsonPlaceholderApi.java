@@ -1,7 +1,11 @@
 package com.example.zoudiy.interfaces;
 
+import com.example.zoudiy.models.KidResponse;
 import com.example.zoudiy.models.OtpResponse;
 import com.example.zoudiy.models.ProfUpdateResponse;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -40,7 +44,11 @@ public interface JsonPlaceholderApi {
     Call<ProfUpdateResponse> Addkid
             (
                     @Field("token") String token,
-                    @Field("name") String name
+                    @Field("name") String name,
+                    @Field("dob") String dob,
+                    @Field("class") String standard,
+                    @Field("school") String school,
+                    @Field("coaching") String coaching
             );
 
     @FormUrlEncoded
@@ -48,7 +56,14 @@ public interface JsonPlaceholderApi {
     Call<ProfUpdateResponse> Addaddress
             (
                     @Field("token") String token,
-                    @Field("fullAddress") String address
+                    @Field("fullAddress") String fullAddress,
+                    @Field("coordinates") LatLng latLng,
+                    @Field("postalCode") String postalCode,
+                    @Field("tag") String tag,
+                    @Field("landmark") String landmark,
+                    @Field("city") String city,
+                    @Field("type") String type
+
             );
 
     @FormUrlEncoded
@@ -73,8 +88,14 @@ public interface JsonPlaceholderApi {
     Call<ProfUpdateResponse> Deleteaddress
             (
                     @Field("token") String token,
-                    @Field("postalCode") String postalCode,
                     @Field("addressId") String addressId
+            );
+
+    @FormUrlEncoded
+    @POST("profile/get-kids")
+    Call<ProfUpdateResponse> Getkids
+            (
+                    @Field("token") String token
             );
 
 

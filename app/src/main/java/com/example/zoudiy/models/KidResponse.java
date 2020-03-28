@@ -3,7 +3,7 @@ package com.example.zoudiy.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Kid {
+public class KidResponse {
 
     @SerializedName("name")
     @Expose
@@ -13,7 +13,7 @@ public class Kid {
     private String dob;
     @SerializedName("class")
     @Expose
-    private String standard;
+    private String _class;
     @SerializedName("school")
     @Expose
     private String school;
@@ -21,16 +21,6 @@ public class Kid {
     @Expose
     private String coaching;
 
-    int picture;
-
-    public Kid(String name, String dob, String standard, String school, String coaching, int picture) {
-        this.name = name;
-        this.dob = dob;
-        this.school = school;
-        this.standard = standard;
-        this.coaching = coaching;
-        this.picture = picture;
-    }
 
     public String getName() {
         return name;
@@ -48,20 +38,20 @@ public class Kid {
         this.dob = dob;
     }
 
+    public String getClass_() {
+        return _class;
+    }
+
+    public void setClass_(String _class) {
+        this._class = _class;
+    }
+
     public String getSchool() {
         return school;
     }
 
     public void setSchool(String school) {
         this.school = school;
-    }
-
-    public String getStandard() {
-        return standard;
-    }
-
-    public void setStandard(String standard) {
-        this.standard = standard;
     }
 
     public String getCoaching() {
@@ -72,11 +62,5 @@ public class Kid {
         this.coaching = coaching;
     }
 
-    public int getPicture() {
-        return picture;
-    }
 
-    public void setPicture(int picture) {
-        this.picture = picture;
-    }
 }
