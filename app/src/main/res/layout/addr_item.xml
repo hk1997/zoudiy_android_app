@@ -24,26 +24,26 @@
                 android:padding="4dp" />
 
             <TextView
-                android:id="@+id/addr_city"
+                android:id="@+id/addr_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_toEndOf="@id/addr_picture"
-                android:text="Address Name"
+                android:text="Name"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/addr_nickname"
+                android:id="@+id/addr_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/addr_city"
+                android:layout_below="@id/addr_tag"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/addr_picture"
                 android:paddingLeft="15dp"
-                android:text="Pincode"
+                android:text="City"
                 android:textColor="@color/black"
                 android:textSize="17sp"/>
 
@@ -51,25 +51,37 @@
                 android:id="@+id/addr_postal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/addr_nickname"
+                android:layout_below="@id/addr_city"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/addr_picture"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:text="postal"
+                android:text="Postal"
                 android:textColor="@color/black"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/addr_type"
+                android:id="@+id/addr_land"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/addr_postal"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/addr_picture"
-                android:text="type"
+                android:text="Landmark"
+                android:paddingLeft="15dp"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/addr_full"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addr_land"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/addr_picture"
+                android:text="Full addr"
                 android:paddingLeft="15dp"
                 android:textColor="@color/black"
                 android:textSize="17sp" />

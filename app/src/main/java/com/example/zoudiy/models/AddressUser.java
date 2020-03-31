@@ -1,39 +1,57 @@
 package com.example.zoudiy.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class AddressUser {
 
-    String city;
-    String postalCode;
-    String nickname;
-    String type;
-    String locality;
-    int picture;
+    @SerializedName("coordinates")
+    @Expose
+    private AddressLatLng coordinates;
+    @SerializedName("fullAddress")
+    @Expose
+    private String fullAddress;
+    @SerializedName("postalCode")
+    @Expose
+    private String postalCode;
+    @SerializedName("tag")
+    @Expose
+    private String tag;
+    @SerializedName("landmark")
+    @Expose
+    private String landmark;
+    @SerializedName("city")
+    @Expose
+    private String city;
+    @SerializedName("type")
+    @Expose
+    private String type;
 
 
-
-    public AddressUser(String city, String postalCode, String nickname, String type, String locality, int picture) {
-        this.city = city;
+    public AddressUser(AddressLatLng coordinates, String fullAddress, String postalCode, String tag, String landmark, String city, String type) {
+        this.coordinates = coordinates;
+        this.fullAddress = fullAddress;
         this.postalCode = postalCode;
-        this.nickname = nickname;
-        this.type = type;
-        this.locality = locality;
-        this.picture = picture;
-    }
-
-    public int getPicture() {
-        return picture;
-    }
-
-    public void setPicture(int picture) {
-        this.picture = picture;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
+        this.tag = tag;
+        this.landmark = landmark;
         this.city = city;
+        this.type = type;
+    }
+
+    public AddressLatLng getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(AddressLatLng coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public String getFullAddress() {
+        return fullAddress;
+    }
+
+    public void setFullAddress(String fullAddress) {
+        this.fullAddress = fullAddress;
     }
 
     public String getPostalCode() {
@@ -44,12 +62,28 @@ public class AddressUser {
         this.postalCode = postalCode;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getTag() {
+        return tag;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getLandmark() {
+        return landmark;
+    }
+
+    public void setLandmark(String landmark) {
+        this.landmark = landmark;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getType() {
@@ -58,13 +92,5 @@ public class AddressUser {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getLocality() {
-        return locality;
-    }
-
-    public void setLocality(String locality) {
-        this.locality = locality;
     }
 }

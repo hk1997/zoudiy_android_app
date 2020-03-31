@@ -1,6 +1,9 @@
 package com.example.zoudiy.activities;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,14 +14,20 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.zoudiy.R;
+import com.example.zoudiy.models.AddressLatLng;
+import com.example.zoudiy.models.ProfUpdateResponse;
+import com.example.zoudiy.utils.Preference;
+import com.example.zoudiy.utils.RetrofitClient;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -31,15 +40,25 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.AddressComponent;
+import com.google.android.libraries.places.api.model.AddressComponents;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.model.PlaceLikelihood;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
+import org.json.JSONArray;
+
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -86,15 +105,69 @@ public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback 
         }
     };
 
-    AdapterView.OnItemLongClickListener itemLongClickListener = new AdapterView.OnItemLongClickListener() {
-        @Override
-        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-            return false;
-        }
+    AdapterView.OnItemLongClickListener itemLongClickListener = (parent, view, position, id) -> {
+            Log.e("test", "long clicked");
+            String token = Preference.getAccessToken(this);
+            alertDialog(token, position);
+        return false;
     };
 
+    private void alertDialog(String token, int position) {
+        AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+        dialog.setMessage("Are you sure you want to add new Address?");
+        dialog.setTitle("Confirm");
+        dialog.setPositiveButton("YES",
+                (dialog12, which) -> {
 
+
+                    Geocoder geocoder;
+                    List<Address> addresses = null;
+                    geocoder = new Geocoder(this, Locale.getDefault());
+
+                    try {
+                        addresses = geocoder.getFromLocation(mLikelyPlaceLatLngs[position].latitude,mLikelyPlaceLatLngs[position].longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                    String city = addresses.get(0).getLocality();
+                    String state = addresses.get(0).getAdminArea();
+                    String country = addresses.get(0).getCountryName();
+                    String postalCode = addresses.get(0).getPostalCode();
+                    String knownName = addresses.get(0).getFeatureName();
+
+                    AddressLatLng addressLatLng = new AddressLatLng(0,0);
+                    addressLatLng.setLat( mLikelyPlaceLatLngs[position].latitude);
+                    addressLatLng.setLng( mLikelyPlaceLatLngs[position].longitude);
+
+                    Call<ProfUpdateResponse> call = RetrofitClient
+                            .getInstance()
+                            .getApi()
+                            .Addaddress(token, address, addressLatLng, postalCode, mLikelyPlaceNames[position], knownName, city, knownName);
+                    call.enqueue(new Callback<ProfUpdateResponse>() {
+                        @Override
+                        public void onResponse(Call<ProfUpdateResponse> call, Response<ProfUpdateResponse> response) {
+                            Boolean s = response.body().getSuccess();
+                            Log.d("Success", s + "");
+                            Intent addr = new Intent(AddNewAddr.this, SignupAddr.class);
+                            startActivity(addr);
+                            finish();
+                            //Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<ProfUpdateResponse> call, Throwable t) {
+                            Log.d("Failure", t.toString());
+                            //Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                });
+        dialog.setNegativeButton("Cancel", (dialog1, which) -> Toast.makeText(getApplicationContext(),"Operation Cancelled",Toast.LENGTH_LONG).show());
+        AlertDialog alertDialog=dialog.create();
+        alertDialog.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,11 +265,9 @@ public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback 
         List<Place.Field> placeFields = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS,
                 Place.Field.LAT_LNG);
 
-        // Get the likely places - that is, the businesses and other points of interest that
-        // are the best match for the device's current location.
-        @SuppressWarnings("MissingPermission") final FindCurrentPlaceRequest request =
-                FindCurrentPlaceRequest.builder(placeFields).build();
+        final FindCurrentPlaceRequest request = FindCurrentPlaceRequest.builder(placeFields).build();
         Task<FindCurrentPlaceResponse> placeResponse = mPlacesClient.findCurrentPlace(request);
+
         placeResponse.addOnCompleteListener(this,
                 task -> {
                     if (task.isSuccessful()) {
@@ -212,11 +283,13 @@ public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback 
 
                         for (PlaceLikelihood placeLikelihood : response.getPlaceLikelihoods()) {
                             Place currPlace = placeLikelihood.getPlace();
+
                             mLikelyPlaceNames[i] = currPlace.getName();
                             mLikelyPlaceAddresses[i] = currPlace.getAddress();
                             mLikelyPlaceAttributions[i] = (currPlace.getAttributions() == null) ?
                                     null : TextUtils.join(" ", currPlace.getAttributions());
                             mLikelyPlaceLatLngs[i] = currPlace.getLatLng();
+
 
                             String currLatLng = (mLikelyPlaceLatLngs[i] == null) ?
                                     "" : mLikelyPlaceLatLngs[i].toString();
@@ -310,6 +383,7 @@ public class AddNewAddr extends AppCompatActivity implements OnMapReadyCallback 
                 new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mLikelyPlaceNames);
         lstPlaces.setAdapter(placesAdapter);
         lstPlaces.setOnItemClickListener(listClickedHandler);
+        lstPlaces.setOnItemLongClickListener(itemLongClickListener);
     }
 
 }

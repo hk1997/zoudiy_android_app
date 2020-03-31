@@ -1,15 +1,12 @@
 package com.example.zoudiy.interfaces;
 
-import com.example.zoudiy.models.KidResponse;
+import com.example.zoudiy.models.AddressLatLng;
 import com.example.zoudiy.models.OtpResponse;
 import com.example.zoudiy.models.ProfUpdateResponse;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.List;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -57,7 +54,7 @@ public interface JsonPlaceholderApi {
             (
                     @Field("token") String token,
                     @Field("fullAddress") String fullAddress,
-                    @Field("coordinates") LatLng latLng,
+                    @Field("coordinates") AddressLatLng addressLatLng,
                     @Field("postalCode") String postalCode,
                     @Field("tag") String tag,
                     @Field("landmark") String landmark,
@@ -98,5 +95,11 @@ public interface JsonPlaceholderApi {
                     @Field("token") String token
             );
 
+    @FormUrlEncoded
+    @POST("profile/get-addresses")
+    Call<ProfUpdateResponse> GetAddresses
+            (
+                    @Field("token") String token
+            );
 
 }

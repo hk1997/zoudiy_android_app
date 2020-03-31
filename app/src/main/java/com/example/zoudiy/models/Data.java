@@ -12,6 +12,9 @@ public class Data {
     @SerializedName("kids")
     @Expose
     private List<Kid> kidList;
+    @SerializedName("addresses")
+    @Expose
+    private List<AddressUser> addrList;
 
     public String getToken() {
         return token;
@@ -27,5 +30,13 @@ public class Data {
 
     public void setKidList(List<Kid> kidList) {
         this.kidList = kidList;
+    }
+
+    public List<AddressUser> getAddrList() {
+        return addrList;
+    }
+
+    public void setAddrList(List<AddressUser> addrList) {
+        this.addrList = addrList;
     }
 }

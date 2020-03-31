@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.zoudiy.R;
 import com.example.zoudiy.interfaces.KidAdapter;
 import com.example.zoudiy.models.Kid;
-import com.example.zoudiy.models.KidResponse;
 import com.example.zoudiy.models.ProfUpdateResponse;
 import com.example.zoudiy.utils.Preference;
 import com.example.zoudiy.utils.RetrofitClient;
