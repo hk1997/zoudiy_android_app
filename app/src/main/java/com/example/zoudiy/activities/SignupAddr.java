@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zoudiy.R;
 import com.example.zoudiy.interfaces.AddrAdapter;
-import com.example.zoudiy.interfaces.KidAdapter;
 import com.example.zoudiy.models.AddressUser;
-import com.example.zoudiy.models.Kid;
 import com.example.zoudiy.models.ProfUpdateResponse;
 import com.example.zoudiy.utils.Preference;
 import com.example.zoudiy.utils.RetrofitClient;
@@ -60,7 +58,7 @@ public class SignupAddr extends AppCompatActivity{
             startActivity(intent);
         });
 
-        LoadAddrs();
+        LoadAddrs(); //refreshed
 
     }
 
