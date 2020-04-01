@@ -9,12 +9,12 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -32,14 +32,10 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.google.android.libraries.places:places:2.2.0'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.test.ext:junit:1.1.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.1'

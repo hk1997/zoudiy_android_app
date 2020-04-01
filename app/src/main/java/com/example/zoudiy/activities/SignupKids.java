@@ -38,10 +38,7 @@ public class SignupKids extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<Kid> kidList = new ArrayList<>();
-
-        adapter = new KidAdapter(this, kidList);
-        recyclerView.setAdapter(adapter);
+        Refresh();
 
         FloatingActionButton addkidbutton = findViewById(R.id.addkidbutton);
         addkidbutton.setOnClickListener(v -> {
@@ -58,6 +55,13 @@ public class SignupKids extends AppCompatActivity {
         LoadKids();
     }
 
+    private void Refresh() {
+        List<Kid> kidList = new ArrayList<>();
+        adapter = new KidAdapter(this, kidList);
+        recyclerView.setAdapter(adapter);
+
+    }
+
     private void LoadKids() {
         String token = Preference.getAccessToken(this);
         Call<ProfUpdateResponse> call = RetrofitClient
@@ -68,18 +72,13 @@ public class SignupKids extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProfUpdateResponse> call, Response<ProfUpdateResponse> response) {
                 kidList = response.body().getData().getKidList();
-                Log.d("Success", "" + kidList.get(0).getName() + " " + kidList.size());
                 adapter = new KidAdapter(getApplicationContext(), kidList);
-                Log.d("Success adapter call", "" + kidList.get(0).getName());
-                //setting adapter to recyclerview
                 recyclerView.setAdapter(adapter);
-
             }
 
             @Override
             public void onFailure(Call<ProfUpdateResponse> call, Throwable t) {
                 Log.d("Failure", t.toString());
-                //Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -89,10 +88,7 @@ public class SignupKids extends AppCompatActivity {
     public void onResume()
     {  // After a pause OR at startup
         super.onResume();
-        List<Kid> kidList = new ArrayList<>();
-
-        adapter = new KidAdapter(this, kidList);
-        recyclerView.setAdapter(adapter);
+        Refresh();
         LoadKids();
         //Refresh your stuff here
     }

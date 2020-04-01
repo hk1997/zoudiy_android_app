@@ -1,12 +1,13 @@
 package com.example.zoudiy.interfaces;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +25,7 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
     public KidAdapter(Context mCtx, List<Kid> kidList) {
         this.mCtx = mCtx;
         this.kidList = kidList;
-        //Log.d("Success in constructor", ""+ kidList.get(0).getName());
+
     }
 
     @NonNull
@@ -38,6 +39,21 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull KidViewHolder holder, int position) {
         Kid kid = kidList.get(position);
+
+        holder.manage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Kid.updateKid(id);
+                Toast.makeText(mCtx, "Manage btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Kid.deleteKid(kid.get_id());
+                Toast.makeText(mCtx, "Delete btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //binding the data with the viewholder views
         if (kid.getName() != null)
@@ -78,6 +94,7 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
 
         TextView kidName, kidStandard, kidSchool, kidAge, kidCoaching;
         ImageView kidPicture;
+        Button manage, delete;
 
         KidViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +105,8 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             kidSchool = itemView.findViewById(R.id.kidSchool);
             kidCoaching = itemView.findViewById(R.id.kidCoaching);
             kidPicture = itemView.findViewById(R.id.kidPicture);
+            manage = itemView.findViewById(R.id.manage);
+            delete = itemView.findViewById(R.id.delete);
 
         }
     }

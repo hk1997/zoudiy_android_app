@@ -1,19 +1,7 @@
 <resources>
     <string name="app_name">Zoudiy</string>
-    <string name="login_with">Login with</string>
-    <string name="or">or</string>
-    <string name="terms_conditions">By Clicking Continue, you are accepting our Terms and Condition </string>
-    <string name="privacy_policy">privacy policy</string>
-    <string name="termsconditions"><![CDATA[Terms & Conditions]]></string>
-    <string name="login">Login</string>
-
-    <string name="facebook_app_id">110337933740691</string>
-    <string name="fb_login_protocol_scheme">fb110337933740691</string>
-    <string name="TC">by</string>
 
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>

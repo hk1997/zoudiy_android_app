@@ -1,10 +1,8 @@
 package com.example.zoudiy.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.zoudiy.R;
-import com.example.zoudiy.models.OtpResponse;
 import com.example.zoudiy.models.ProfUpdateResponse;
 import com.example.zoudiy.utils.Preference;
 import com.example.zoudiy.utils.RetrofitClient;

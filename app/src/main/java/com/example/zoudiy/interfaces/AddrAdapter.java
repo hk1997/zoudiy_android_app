@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,18 +21,6 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
 
     private Context mCtx;
     private List<AddressUser> addrList;
-    // private OnItemClickListener mListener;
-
-   /* public interface OnItemClickListener {
-        void onItemClick(int position);
-        void onDeleteClick(int position);
-        void onManageClick(int position);
-
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
-    }*/
 
     public AddrAdapter(Context mCtx, List<AddressUser> addrList) {
         this.mCtx = mCtx;
@@ -42,13 +32,28 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
     public AddrViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.addr_item, null);
-        //return new AddrViewHolder(view, mListener);
+
         return new AddrViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AddrViewHolder holder, int position) {
         AddressUser addressUser = addrList.get(position);
+
+        holder.manage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //AddressUser.updateAddress(id);
+                Toast.makeText(mCtx, "Manage btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddressUser.deleteAddress(addressUser.get_id());
+                Toast.makeText(mCtx, "Delete btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         if(addressUser.getFullAddress()!=null){
             holder.addrFull.setText(addressUser.getFullAddress());
@@ -90,9 +95,9 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
 
         TextView addrCity, addrTag, addrPostal, addrLand, addrFull;
         ImageView addrPicture;
-        //Button manage, delete;
+        Button manage, delete;
 
-        //AddrViewHolder(@NonNull View itemView, final AdapterView.OnItemClickListener listener) {
+
         AddrViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -102,35 +107,8 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
             addrLand = itemView.findViewById(R.id.addr_land);
             addrFull = itemView.findViewById(R.id.addr_full);
             addrPicture = itemView.findViewById(R.id.addr_picture);
-            //manage = itemView.findViewById(R.id.manage);
-            // delete = itemView.findViewById(R.id.delete);
-
-           /* itemView.setOnClickListener(v -> {
-                if (listener != null) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(position);
-                    }
-                }
-            });
-
-            delete.setOnClickListener(v -> {
-                if (listener != null) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        listener.onDeleteClick(position);
-                    }
-                }
-            });
-
-            manage.setOnClickListener(v -> {
-                if (listener != null) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        listener.onManageClick(position);
-                    }
-                }
-            });*/
+            manage = itemView.findViewById(R.id.manage);
+            delete = itemView.findViewById(R.id.delete);
 
         }
     }

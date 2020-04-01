@@ -3,7 +3,6 @@ package com.example.zoudiy.interfaces;
 import com.example.zoudiy.models.AddressLatLng;
 import com.example.zoudiy.models.OtpResponse;
 import com.example.zoudiy.models.ProfUpdateResponse;
-import com.google.android.gms.maps.model.LatLng;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
