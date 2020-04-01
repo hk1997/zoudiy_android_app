@@ -1,7 +1,6 @@
 package com.example.zoudiy.interfaces;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,18 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
 
     private Context mCtx;
     private List<AddressUser> addrList;
+    // private OnItemClickListener mListener;
+
+   /* public interface OnItemClickListener {
+        void onItemClick(int position);
+        void onDeleteClick(int position);
+        void onManageClick(int position);
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }*/
 
     public AddrAdapter(Context mCtx, List<AddressUser> addrList) {
         this.mCtx = mCtx;
@@ -31,6 +42,7 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
     public AddrViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.addr_item, null);
+        //return new AddrViewHolder(view, mListener);
         return new AddrViewHolder(view);
     }
 
@@ -42,30 +54,30 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
             holder.addrFull.setText(addressUser.getFullAddress());
         }
         else
-            holder.addrFull.setText("not found");
+            holder.addrFull.setText(R.string.unavailable);
 
         if(addressUser.getCity()!=null){
             holder.addrCity.setText(addressUser.getCity());
         }
         else
-            holder.addrCity.setText("not found");
+            holder.addrCity.setText(R.string.unavailable);
 
         if(addressUser.getTag()!=null){
             holder.addrTag.setText(addressUser.getTag());
         }
         else
-            holder.addrTag.setText("not found");
+            holder.addrTag.setText(R.string.unavailable);
         if(addressUser.getPostalCode()!=null){
-            holder.addrPostal.setText(String.valueOf(addressUser.getPostalCode()));
+            holder.addrPostal.setText(addressUser.getPostalCode());
         }
         else
-            holder.addrPostal.setText("not found");
+            holder.addrPostal.setText(R.string.unavailable);
 
         if(addressUser.getType()!=null){
-            holder.addrLand.setText(String.valueOf(addressUser.getType()));
+            holder.addrLand.setText(addressUser.getType());
         }
         else
-            holder.addrLand.setText("not found");
+            holder.addrLand.setText(R.string.unavailable);
 
         holder.addrPicture.setImageDrawable(mCtx.getResources().getDrawable(R.drawable.zoudiylogo1));
 
@@ -78,7 +90,9 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
 
         TextView addrCity, addrTag, addrPostal, addrLand, addrFull;
         ImageView addrPicture;
+        //Button manage, delete;
 
+        //AddrViewHolder(@NonNull View itemView, final AdapterView.OnItemClickListener listener) {
         AddrViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -88,6 +102,35 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
             addrLand = itemView.findViewById(R.id.addr_land);
             addrFull = itemView.findViewById(R.id.addr_full);
             addrPicture = itemView.findViewById(R.id.addr_picture);
+            //manage = itemView.findViewById(R.id.manage);
+            // delete = itemView.findViewById(R.id.delete);
+
+           /* itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(position);
+                    }
+                }
+            });
+
+            delete.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onDeleteClick(position);
+                    }
+                }
+            });
+
+            manage.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onManageClick(position);
+                    }
+                }
+            });*/
 
         }
     }

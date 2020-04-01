@@ -20,16 +20,20 @@ public class Kid {
     @SerializedName("coaching")
     @Expose
     private String coaching;
+    @SerializedName("_id")
+    @Expose
+    private String _id;
 
     int picture;
 
-    public Kid(String name, String dob, String standard, String school, String coaching, int picture) {
+    public Kid(String name, String dob, String standard, String school, String coaching, int picture, String _id) {
         this.name = name;
         this.dob = dob;
         this.school = school;
         this.standard = standard;
         this.coaching = coaching;
         this.picture = picture;
+        this._id = _id;
     }
 
     public String getName() {
@@ -78,5 +82,13 @@ public class Kid {
 
     public void setPicture(int picture) {
         this.picture = picture;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

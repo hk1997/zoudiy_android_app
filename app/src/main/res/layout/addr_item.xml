@@ -86,6 +86,35 @@
                 android:textColor="@color/black"
                 android:textSize="17sp" />
 
+            <Button
+                android:id="@+id/manage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addr_full"
+                android:layout_margin="2dp"
+                android:background="@drawable/border"
+                android:clickable="true"
+                android:fontFamily="@font/oswald_semibold"
+                android:text="Manege"
+                android:textColor="#1E645F"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addr_full"
+                android:layout_margin="2dp"
+                android:layout_toEndOf="@id/manage"
+                android:background="@drawable/border"
+                android:clickable="true"
+                android:fontFamily="@font/oswald_semibold"
+                android:text="Delete"
+                android:textColor="#1E645F"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

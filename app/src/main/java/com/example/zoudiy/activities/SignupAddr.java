@@ -13,7 +13,6 @@ import com.example.zoudiy.R;
 import com.example.zoudiy.interfaces.AddrAdapter;
 import com.example.zoudiy.models.AddressUser;
 import com.example.zoudiy.models.ProfUpdateResponse;
-import com.example.zoudiy.utils.Preference;
 import com.example.zoudiy.utils.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,6 +29,7 @@ public class SignupAddr extends AppCompatActivity{
     List<AddressUser> addrList;
     RecyclerView recyclerView;
     AddrAdapter adapter;
+    //Button manage, delete;
 
 
     @Override
@@ -41,10 +41,7 @@ public class SignupAddr extends AppCompatActivity{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<AddressUser> addrList = new ArrayList<>();
-
-        adapter = new AddrAdapter(this, addrList);
-        recyclerView.setAdapter(adapter);
+        Refresh();
 
         addAddr = findViewById(R.id.add_addr);
         addAddr.setOnClickListener(v -> {
@@ -57,13 +54,58 @@ public class SignupAddr extends AppCompatActivity{
             Intent intent = new Intent(SignupAddr.this, HomeActivity.class);
             startActivity(intent);
         });
-
-        LoadAddrs(); //refreshed
+        LoadAddrs();
+        //setButtons();
 
     }
 
+    private void Refresh() {
+        List<AddressUser> addrList = new ArrayList<>();
+        adapter = new AddrAdapter(this, addrList);
+        recyclerView.setAdapter(adapter);
+
+        //LoadAddrs();
+
+       /* manage = findViewById(R.id.manage);
+        delete = findViewById(R.id.delete);
+        adapter.setOnItemClickListener(new AddrAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Log.e("item ", "refresh");
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+                Log.e("delete ", "refresh");
+            }
+            @Override
+            public void onManageClick(int position) {
+                Log.e("manage ", "refresh");
+            }
+        });
+        */
+    }
+
+  /*  public void setButtons() {
+        manage = findViewById(R.id.manage);
+        delete = findViewById(R.id.delete);
+        Log.e("set buttons ", "buttons found");
+        if(manage!=null)
+        manage.setOnClickListener(v -> {
+            Intent intent = new Intent(SignupAddr.this, AddNewAddr.class);
+            startActivity(intent);
+        });
+
+        if(delete!=null)
+        delete.setOnClickListener(v -> {
+            Log.e("delete ", "setbuttons");
+        });
+        Log.e("set buttons ", "buttons set");
+    }*/
+
     private void LoadAddrs() {
-        String token = Preference.getAccessToken(this);
+        //String token = Preference.getAccessToken(this);
+        String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlMzY2YmJkZDI0YTAwMTJhMjExMWIiLCJpYXQiOjE1ODUzNDIxOTcsImV4cCI6MTYxNjg3ODE5N30.bWxP6C2o2Fuxi4GlfRu-pzyaE_e6OnDt5qP6qeVD8H0";
         Call<ProfUpdateResponse> call = RetrofitClient
                 .getInstance()
                 .getApi()
@@ -72,12 +114,9 @@ public class SignupAddr extends AppCompatActivity{
             @Override
             public void onResponse(Call<ProfUpdateResponse> call, Response<ProfUpdateResponse> response) {
                 addrList = response.body().getData().getAddrList();
-                Log.d("Success", "" + addrList.get(0).getFullAddress() + " " + addrList.size());
                 adapter = new AddrAdapter(getApplicationContext(), addrList);
-                Log.d("Success adapter call", "" + addrList.get(0).getType());
-                //setting adapter to recyclerview
                 recyclerView.setAdapter(adapter);
-
+                //setButtons();
             }
 
             @Override
@@ -93,10 +132,7 @@ public class SignupAddr extends AppCompatActivity{
     public void onResume()
     {  // After a pause OR at startup
         super.onResume();
-        List<AddressUser> addrList = new ArrayList<>();
-
-        adapter = new AddrAdapter(this, addrList);
-        recyclerView.setAdapter(adapter);
+        Refresh();
         LoadAddrs();
         //Refresh your stuff here
     }

@@ -26,9 +26,12 @@ public class AddressUser {
     @SerializedName("type")
     @Expose
     private String type;
+    @SerializedName("_id")
+    @Expose
+    private String _id;
 
 
-    public AddressUser(AddressLatLng coordinates, String fullAddress, String postalCode, String tag, String landmark, String city, String type) {
+    public AddressUser(AddressLatLng coordinates, String fullAddress, String postalCode, String tag, String landmark, String city, String type, String _id) {
         this.coordinates = coordinates;
         this.fullAddress = fullAddress;
         this.postalCode = postalCode;
@@ -36,6 +39,7 @@ public class AddressUser {
         this.landmark = landmark;
         this.city = city;
         this.type = type;
+        this._id = _id;
     }
 
     public AddressLatLng getCoordinates() {
@@ -92,5 +96,13 @@ public class AddressUser {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }
