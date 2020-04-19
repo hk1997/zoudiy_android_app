@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="Add Kid Details:"
+        android:text="Edit Details:"
         android:fontFamily="@font/oswald_semibold"
         android:textColor="#1E645F"
         android:textSize="34sp"

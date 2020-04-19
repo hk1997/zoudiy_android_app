@@ -13,6 +13,7 @@ import com.example.zoudiy.R;
 import com.example.zoudiy.interfaces.AddrAdapter;
 import com.example.zoudiy.models.AddressUser;
 import com.example.zoudiy.models.ProfUpdateResponse;
+import com.example.zoudiy.utils.Preference;
 import com.example.zoudiy.utils.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -63,8 +64,8 @@ public class SignupAddr extends AppCompatActivity{
     }
 
     private void LoadAddrs() {
-        //String token = Preference.getAccessToken(this);
-        String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlMzY2YmJkZDI0YTAwMTJhMjExMWIiLCJpYXQiOjE1ODUzNDIxOTcsImV4cCI6MTYxNjg3ODE5N30.bWxP6C2o2Fuxi4GlfRu-pzyaE_e6OnDt5qP6qeVD8H0";
+        String token = Preference.getAccessToken(this);
+        //String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlMzY2YmJkZDI0YTAwMTJhMjExMWIiLCJpYXQiOjE1ODUzNDIxOTcsImV4cCI6MTYxNjg3ODE5N30.bWxP6C2o2Fuxi4GlfRu-pzyaE_e6OnDt5qP6qeVD8H0";
         Call<ProfUpdateResponse> call = RetrofitClient
                 .getInstance()
                 .getApi()

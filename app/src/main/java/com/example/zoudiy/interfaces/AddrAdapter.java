@@ -40,19 +40,14 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
     public void onBindViewHolder(@NonNull AddrViewHolder holder, int position) {
         AddressUser addressUser = addrList.get(position);
 
-        holder.manage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //AddressUser.updateAddress(id);
-                Toast.makeText(mCtx, "Manage btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
-            }
+        holder.manage.setOnClickListener(v -> {
+            AddressUser.updateAddress(addressUser.get_id());
+            Toast.makeText(mCtx, "Manage btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
         });
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddressUser.deleteAddress(addressUser.get_id());
-                Toast.makeText(mCtx, "Delete btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
-            }
+        holder.delete.setOnClickListener(v -> {
+            AddressUser.deleteAddress(addressUser.get_id());
+            //add confirmation
+            Toast.makeText(mCtx, "Delete btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
         });
 
         if(addressUser.getFullAddress()!=null){

@@ -114,7 +114,7 @@ public class AddressUser {
     }
 
     public static void deleteAddress(String _id) {
-        //String token = Preference.getAccessToken(this);
+
         String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlMzY2YmJkZDI0YTAwMTJhMjExMWIiLCJpYXQiOjE1ODUzNDIxOTcsImV4cCI6MTYxNjg3ODE5N30.bWxP6C2o2Fuxi4GlfRu-pzyaE_e6OnDt5qP6qeVD8H0";
         Call<ProfUpdateResponse> call = RetrofitClient
                 .getInstance()
@@ -135,9 +135,11 @@ public class AddressUser {
     }
 
     public static void updateAddress(String _id) {
-        //String token = Preference.getAccessToken(this);
-        String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlMzY2YmJkZDI0YTAwMTJhMjExMWIiLCJpYXQiOjE1ODUzNDIxOTcsImV4cCI6MTYxNjg3ODE5N30.bWxP6C2o2Fuxi4GlfRu-pzyaE_e6OnDt5qP6qeVD8H0";
-        Call<ProfUpdateResponse> call = RetrofitClient
+        /*String token = Preference.getAccessToken(this);
+        Intent intent = new Intent();*/
+        //startActivity(intent);
+        //String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlMzY2YmJkZDI0YTAwMTJhMjExMWIiLCJpYXQiOjE1ODUzNDIxOTcsImV4cCI6MTYxNjg3ODE5N30.bWxP6C2o2Fuxi4GlfRu-pzyaE_e6OnDt5qP6qeVD8H0";
+        /*Call<ProfUpdateResponse> call = RetrofitClient
                 .getInstance()
                 .getApi()
                 .Deleteaddress(token, _id);
@@ -152,7 +154,8 @@ public class AddressUser {
             public void onFailure(Call<ProfUpdateResponse> call, Throwable t) {
                 Log.d("Failure", t.toString());
             }
-        });
+        });*/
+
     }
 
 }
