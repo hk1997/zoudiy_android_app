@@ -1,7 +1,10 @@
 package com.example.zoudiy.models;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import com.example.zoudiy.activities.AddNewKid;
 import com.example.zoudiy.utils.RetrofitClient;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -113,9 +116,8 @@ public class AddressUser {
         this._id = _id;
     }
 
-    public static void deleteAddress(String _id) {
+    public static void deleteAddress(String _id, String token) {
 
-        String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlMzY2YmJkZDI0YTAwMTJhMjExMWIiLCJpYXQiOjE1ODUzNDIxOTcsImV4cCI6MTYxNjg3ODE5N30.bWxP6C2o2Fuxi4GlfRu-pzyaE_e6OnDt5qP6qeVD8H0";
         Call<ProfUpdateResponse> call = RetrofitClient
                 .getInstance()
                 .getApi()
@@ -134,11 +136,11 @@ public class AddressUser {
         });
     }
 
-    public static void updateAddress(String _id) {
-        /*String token = Preference.getAccessToken(this);
-        Intent intent = new Intent();*/
-        //startActivity(intent);
-        //String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlMzY2YmJkZDI0YTAwMTJhMjExMWIiLCJpYXQiOjE1ODUzNDIxOTcsImV4cCI6MTYxNjg3ODE5N30.bWxP6C2o2Fuxi4GlfRu-pzyaE_e6OnDt5qP6qeVD8H0";
+    public static void updateAddress(String _id, String token, Context context) {
+
+        Intent intent = new Intent(context, AddNewKid.class);
+        context.startActivity(intent);
+
         /*Call<ProfUpdateResponse> call = RetrofitClient
                 .getInstance()
                 .getApi()

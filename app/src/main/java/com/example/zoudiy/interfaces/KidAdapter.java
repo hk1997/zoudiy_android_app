@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zoudiy.R;
 import com.example.zoudiy.models.Kid;
+import com.example.zoudiy.utils.Preference;
 
 import java.util.List;
 
@@ -39,20 +40,15 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull KidViewHolder holder, int position) {
         Kid kid = kidList.get(position);
+        String token = Preference.getAccessToken(mCtx);
 
-        holder.manage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Kid.updateKid(id);
-                Toast.makeText(mCtx, "Manage btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
-            }
+        holder.manage.setOnClickListener(v -> {
+            Kid.updateKid(kid.get_id(), token, mCtx);
+            Toast.makeText(mCtx, "Manage btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
         });
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Kid.deleteKid(kid.get_id());
-                Toast.makeText(mCtx, "Delete btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
-            }
+        holder.delete.setOnClickListener(v -> {
+            Kid.deleteKid(kid.get_id(), token);
+            Toast.makeText(mCtx, "Delete btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
         });
 
         //binding the data with the viewholder views

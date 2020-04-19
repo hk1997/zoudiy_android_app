@@ -21,11 +21,11 @@ public class  SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             // This method will be executed once the timer is over
             if (Preference.getAccessToken(SplashActivity.this)!=null){
-                Intent i = new Intent(SplashActivity.this, SignupAddr.class);
+                Intent i = new Intent(SplashActivity.this, MainActivity.class); //home activity
                 startActivity(i);
             }
             else{
-                Intent i = new Intent(SplashActivity.this, SignupAddr.class);
+                Intent i = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(i);
             }
             finish();

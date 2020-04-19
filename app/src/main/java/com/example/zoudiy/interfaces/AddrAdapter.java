@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zoudiy.R;
 import com.example.zoudiy.models.AddressUser;
+import com.example.zoudiy.utils.Preference;
 
 import java.util.List;
 
@@ -39,13 +40,14 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
     @Override
     public void onBindViewHolder(@NonNull AddrViewHolder holder, int position) {
         AddressUser addressUser = addrList.get(position);
+        String token = Preference.getAccessToken(mCtx);
 
         holder.manage.setOnClickListener(v -> {
-            AddressUser.updateAddress(addressUser.get_id());
+            AddressUser.updateAddress(addressUser.get_id(), token, mCtx);
             Toast.makeText(mCtx, "Manage btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
         });
         holder.delete.setOnClickListener(v -> {
-            AddressUser.deleteAddress(addressUser.get_id());
+            AddressUser.deleteAddress(addressUser.get_id(), token);
             //add confirmation
             Toast.makeText(mCtx, "Delete btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
         });
