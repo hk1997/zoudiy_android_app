@@ -43,11 +43,11 @@ public class AddrAdapter extends RecyclerView.Adapter<AddrAdapter.AddrViewHolder
         String token = Preference.getAccessToken(mCtx);
 
         holder.manage.setOnClickListener(v -> {
-            AddressUser.updateAddress(addressUser.get_id(), token, mCtx);
+            AddressUser.updateAddress(addressUser.get_id(), mCtx);
             Toast.makeText(mCtx, "Manage btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
         });
         holder.delete.setOnClickListener(v -> {
-            AddressUser.deleteAddress(addressUser.get_id(), token);
+            AddressUser.deleteAddress(addressUser.get_id(), token, mCtx);
             //add confirmation
             Toast.makeText(mCtx, "Delete btn fetch:" + addressUser.get_id(), Toast.LENGTH_SHORT).show();
         });

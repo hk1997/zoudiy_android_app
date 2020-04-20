@@ -43,11 +43,11 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         String token = Preference.getAccessToken(mCtx);
 
         holder.manage.setOnClickListener(v -> {
-            Kid.updateKid(kid.get_id(), token, mCtx);
+            Kid.updateKid(kid.get_id(), mCtx);
             Toast.makeText(mCtx, "Manage btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
         });
         holder.delete.setOnClickListener(v -> {
-            Kid.deleteKid(kid.get_id(), token);
+            Kid.deleteKid(kid.get_id(), token, mCtx);
             Toast.makeText(mCtx, "Delete btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
         });
 

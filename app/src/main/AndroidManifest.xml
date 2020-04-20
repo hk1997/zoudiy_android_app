@@ -29,6 +29,7 @@
             android:label="@string/title_activity_add_new_addr" />
         <activity android:name=".activities.AddNewKid" />
         <activity android:name=".activities.verifyOTP" />
+        <activity android:name=".activities.EditDetails" />
         <activity android:name=".activities.SignupAddr" />
         <activity android:name=".activities.SignupKids" />
         <activity

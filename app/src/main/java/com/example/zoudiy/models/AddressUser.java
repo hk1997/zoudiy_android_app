@@ -3,8 +3,11 @@ package com.example.zoudiy.models;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.example.zoudiy.activities.AddNewKid;
+import androidx.appcompat.app.AlertDialog;
+
+import com.example.zoudiy.activities.EditDetails;
 import com.example.zoudiy.utils.RetrofitClient;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -116,47 +119,45 @@ public class AddressUser {
         this._id = _id;
     }
 
-    public static void deleteAddress(String _id, String token) {
+    public static void deleteAddress(String _id, String token, Context context) {
 
-        Call<ProfUpdateResponse> call = RetrofitClient
-                .getInstance()
-                .getApi()
-                .Deleteaddress(token, _id);
-        call.enqueue(new Callback<ProfUpdateResponse>() {
-            @Override
-            public void onResponse(Call<ProfUpdateResponse> call, Response<ProfUpdateResponse> response) {
-                String msg = response.body().getMessage();
-                Log.e("delete ", msg);
-            }
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+        dialog.setMessage("Are you sure you want to delete address?");
+        dialog.setTitle("Confirm");
+        dialog.setPositiveButton("Yes",
+                (dialog12, which) -> {
 
-            @Override
-            public void onFailure(Call<ProfUpdateResponse> call, Throwable t) {
-                Log.d("Failure", t.toString());
-            }
-        });
+                    Call<ProfUpdateResponse> call = RetrofitClient
+                            .getInstance()
+                            .getApi()
+                            .Deleteaddress(token, _id);
+                    call.enqueue(new Callback<ProfUpdateResponse>() {
+                        @Override
+                        public void onResponse(Call<ProfUpdateResponse> call, Response<ProfUpdateResponse> response) {
+                            String msg = response.body().getMessage();
+                            Log.e("delete ", msg);
+                        }
+
+                        @Override
+                        public void onFailure(Call<ProfUpdateResponse> call, Throwable t) {
+                            Log.d("Failure", t.toString());
+                        }
+                    });
+
+                });
+        dialog.setNegativeButton("Cancel", (dialog1, which) -> Toast.makeText(context, "Operation Cancelled", Toast.LENGTH_LONG).show());
+        AlertDialog alertDialog = dialog.create();
+        alertDialog.show();
+
+
     }
 
-    public static void updateAddress(String _id, String token, Context context) {
+    public static void updateAddress(String _id, Context context) {
 
-        Intent intent = new Intent(context, AddNewKid.class);
+        Intent intent = new Intent(context, EditDetails.class);
+        intent.putExtra("id", _id);
+        intent.putExtra("type", "address");
         context.startActivity(intent);
-
-        /*Call<ProfUpdateResponse> call = RetrofitClient
-                .getInstance()
-                .getApi()
-                .Deleteaddress(token, _id);
-        call.enqueue(new Callback<ProfUpdateResponse>() {
-            @Override
-            public void onResponse(Call<ProfUpdateResponse> call, Response<ProfUpdateResponse> response) {
-                String msg = response.body().getMessage();
-                Log.e("delete ", msg);
-            }
-
-            @Override
-            public void onFailure(Call<ProfUpdateResponse> call, Throwable t) {
-                Log.d("Failure", t.toString());
-            }
-        });*/
 
     }
 
