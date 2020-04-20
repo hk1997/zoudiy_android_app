@@ -32,17 +32,12 @@ public class Signup extends AppCompatActivity {
 
         token = Preference.getAccessToken(this);
 
-        Log.e("token is : ", token);
 
         Button B1= findViewById(R.id.buttonRegister);
         B1.setOnClickListener(v -> {
 
             name = nameET.getText().toString();
             email = emailET.getText().toString();
-
-            Log.e("prof sent token ",token);
-            Log.e("prof sent name ",name);
-            Log.e("prof sent email ",email);
 
             Call<ProfUpdateResponse> call = RetrofitClient
                     .getInstance()
@@ -71,7 +66,6 @@ public class Signup extends AppCompatActivity {
                             Toast.makeText(Signup.this,"Error in update",Toast.LENGTH_LONG).show();
                             return;
                         }
-                        //Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -80,16 +74,9 @@ public class Signup extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<ProfUpdateResponse> call, Throwable t) {
                     Log.d("Failure",t.toString());
-                    //Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
 
-
-
-
-
-            /*Intent intent=new Intent(Signup.this, SignupKids.class);
-            startActivity(intent);*/
         });
     }
 }

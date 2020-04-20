@@ -1,22 +1,22 @@
 package com.example.zoudiy.models;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.zoudiy.activities.EditDetails;
 import com.example.zoudiy.utils.RetrofitClient;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Kid {
+public class Kid implements Serializable {
 
     @SerializedName("name")
     @Expose
@@ -81,16 +81,6 @@ public class Kid {
         AlertDialog alertDialog = dialog.create();
         alertDialog.show();
 
-
-    }
-
-    public static void updateKid(String _id, Context context) {
-
-        Intent intent = new Intent(context, EditDetails.class);
-        intent.putExtra("id", _id);
-        intent.putExtra("type", "kid");
-        context.startActivity(intent);
-
     }
 
     public String getName() {
@@ -132,7 +122,6 @@ public class Kid {
     public void setCoaching(String coaching) {
         this.coaching = coaching;
     }
-
 
     public String get_id() {
         return _id;

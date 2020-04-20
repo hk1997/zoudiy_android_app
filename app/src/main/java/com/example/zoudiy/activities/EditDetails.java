@@ -1,8 +1,9 @@
 package com.example.zoudiy.activities;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -10,22 +11,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.zoudiy.R;
 import com.example.zoudiy.models.Kid;
-import com.example.zoudiy.models.ProfUpdateResponse;
-import com.example.zoudiy.utils.Preference;
-import com.example.zoudiy.utils.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class EditDetails extends AppCompatActivity {
 
     String type, _id, token;
     List<Kid> kidList = new ArrayList<>();
-    Kid selkid = null;
+    Kid kid;
+
+    EditText ed1, ed2, ed3, ed4, ed5, ed6, ed7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +30,30 @@ public class EditDetails extends AppCompatActivity {
 
         Button B1 = findViewById(R.id.buttonRegister);
 
+        ed1 = findViewById(R.id.ed1);
+        ed2 = findViewById(R.id.ed2);
+        ed3 = findViewById(R.id.ed3);
+        ed4 = findViewById(R.id.ed4);
+        ed5 = findViewById(R.id.ed5);
+        ed6 = findViewById(R.id.ed6);
+        ed7 = findViewById(R.id.ed7); //type
+
         type = getIntent().getStringExtra("type");
         _id = getIntent().getStringExtra("id");
+        kid = (Kid) getIntent().getSerializableExtra("kid");
 
-        token = Preference.getAccessToken(this);
+        //Log.e("kid shits", kid.get_id()+" "+kid.getName());
+
+        switch (type) {
+            case "kid":
+                updateKid(kid);
+                break;
+            case "address":
+                updateAddress();
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), "some error", Toast.LENGTH_LONG).show();
+        }
 
         B1.setOnClickListener(v -> alertDialog());
 
@@ -50,17 +66,6 @@ public class EditDetails extends AppCompatActivity {
         dialog.setPositiveButton("Yes",
                 (dialog12, which) -> {
 
-                    switch (type) {
-                        case "kid":
-                            updateKid();
-                            break;
-                        case "address":
-                            updateAddress();
-                            break;
-                        default:
-                            Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_LONG).show();
-                    }
-
                 });
         dialog.setNegativeButton("Cancel", (dialog1, which) -> Toast.makeText(getApplicationContext(), "Operation Cancelled", Toast.LENGTH_LONG).show());
         AlertDialog alertDialog = dialog.create();
@@ -68,28 +73,27 @@ public class EditDetails extends AppCompatActivity {
     }
 
     private void updateAddress() {
-
-
+        ed7.setVisibility(View.VISIBLE);
         //update address
     }
 
-    private void updateKid() {
-        Call<ProfUpdateResponse> call = RetrofitClient
-                .getInstance()
-                .getApi()
-                .Getkids(token);
-        call.enqueue(new Callback<ProfUpdateResponse>() {
-            @Override
-            public void onResponse(Call<ProfUpdateResponse> call, Response<ProfUpdateResponse> response) {
-                for (Kid kid : kidList = response.body().getData().getKidList())
-                    if (kid.get_id().equals("_id")) selkid = kid;
-            }
+    private void updateKid(Kid kid) {
+        ed7.setVisibility(View.GONE);
+        
+        ed1.setHint("Name");
+        ed2.setHint("D.O.B");
+        ed3.setHint("Class");
+        ed4.setHint("School");
+        ed5.setHint("Coaching");
+        ed6.setHint("Home");
 
-            @Override
-            public void onFailure(Call<ProfUpdateResponse> call, Throwable t) {
-                Log.d("Failure", t.toString());
-            }
-        });
+        ed1.setText(kid.getName());
+        ed2.setText(kid.getDob());
+        ed3.setText(kid.getStandard());
+        ed4.setText(kid.getSchool());
+        ed5.setText(kid.getCoaching());
+        ed6.setText(kid.getHome());
+
 
 
         // add details to edit text

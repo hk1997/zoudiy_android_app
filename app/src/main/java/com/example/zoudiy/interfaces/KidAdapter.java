@@ -1,6 +1,7 @@
 package com.example.zoudiy.interfaces;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zoudiy.R;
+import com.example.zoudiy.activities.EditDetails;
 import com.example.zoudiy.models.Kid;
 import com.example.zoudiy.utils.Preference;
 
@@ -43,7 +45,13 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         String token = Preference.getAccessToken(mCtx);
 
         holder.manage.setOnClickListener(v -> {
-            Kid.updateKid(kid.get_id(), mCtx);
+            Intent intent = new Intent(mCtx, EditDetails.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("id", kid.get_id());
+            intent.putExtra("type", "kid");
+            intent.putExtra("kid", kid);
+            mCtx.startActivity(intent);
+            //Kid.updateKid(kid.get_id(), mCtx);
             Toast.makeText(mCtx, "Manage btn fetch:" + kid.get_id(), Toast.LENGTH_SHORT).show();
         });
         holder.delete.setOnClickListener(v -> {

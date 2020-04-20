@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -25,59 +25,59 @@
 
 
     <EditText
-        android:id="@+id/add_kid_name"
+        android:id="@+id/ed1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/oswald_semibold"
         android:hint="Name:"
         android:textColorHint="#250603"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/dob"
+        app:layout_constraintBottom_toTopOf="@+id/ed2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
 
     <EditText
-        android:id="@+id/dob"
+        android:id="@+id/ed2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/oswald_semibold"
         android:hint="YYYY.MM.DD"
         android:textColorHint="#250603"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/standard"
+        app:layout_constraintBottom_toTopOf="@id/ed3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_kid_name" />
+        app:layout_constraintTop_toBottomOf="@id/ed1" />
 
     <EditText
-        android:id="@+id/standard"
+        android:id="@+id/ed3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/oswald_semibold"
         android:hint="Class"
         android:textColorHint="#250603"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/school"
+        app:layout_constraintBottom_toTopOf="@+id/ed4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dob" />
+        app:layout_constraintTop_toBottomOf="@+id/ed2" />
 
     <EditText
-        android:id="@+id/school"
+        android:id="@+id/ed4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/oswald_semibold"
         android:hint="School"
         android:textColorHint="#250603"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/coaching"
+        app:layout_constraintBottom_toTopOf="@id/ed5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/standard" />
+        app:layout_constraintTop_toBottomOf="@id/ed3" />
 
     <EditText
-        android:id="@+id/coaching"
+        android:id="@+id/ed5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/oswald_semibold"
@@ -86,10 +86,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school" />
+        app:layout_constraintTop_toBottomOf="@+id/ed4" />
 
     <EditText
-        android:id="@+id/home"
+        android:id="@+id/ed6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/oswald_semibold"
@@ -98,19 +98,20 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coaching" />
+        app:layout_constraintTop_toBottomOf="@+id/ed5" />
 
     <EditText
-        android:id="@+id/type"
+        android:id="@+id/ed7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/oswald_semibold"
         android:hint="Type"
         android:textColorHint="#250603"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home" />
+        app:layout_constraintTop_toBottomOf="@+id/ed6" />
 
     <Button
         android:id="@+id/buttonRegister"
